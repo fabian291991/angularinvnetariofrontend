@@ -1,0 +1,75 @@
+<div class="col-lg-12">
+    <nb-card>
+         <!-- Se muestra el encabezado si se está en modo creación -->
+        <nb-card-header *ngIf="modoCreacion">
+            CREAR PRODUCTO
+        </nb-card-header>
+        <!-- Se muestra el encabezado si se está en modo edición -->
+        <nb-card-header *ngIf="!modoCreacion">
+            ACTUALIZAR PRODUCTO
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-3">
+                    <label>referencia</label>
+                </div>
+                <div class="col-9">
+                    <!-- Se deshabilita si no está en modo creación -->
+                    <input class="form-control" type="text" 
+                           [disabled]="!modoCreacion" 
+                           [(ngModel)]="elProducto.referencia"> <!-- Vinculación bidireccional del valor del campo con la propiedad "cedula" del objeto "elEstudiante" -->
+                    <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Cedula" está vacío -->       
+                    <p *ngIf="intentoEnvio && elProducto.referencia ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>precio</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text" 
+                           [(ngModel)]="elProducto.precio"><!-- Vinculación bidireccional del valor del campo con la propiedad "nombre" del objeto "elEstudiante" -->
+                    <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Nombre" está vacío -->       
+                    <p *ngIf="intentoEnvio && elProducto.precio=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>talla</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text" 
+                           [(ngModel)]="elProducto.talla">
+                    <p *ngIf="intentoEnvio && elProducto.talla=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>marca</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text" 
+                           [(ngModel)]="elProducto.marca">
+                    <p *ngIf="intentoEnvio && elProducto.marca=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            
+            <div class="row">
+                    <!-- Botón "Crear" visible si se está en modo creación -->
+                    <button  *ngIf="modoCreacion" 
+                              class="btn btn-primary btn-block"  (click)="agregar()">
+                        Crear
+                    </button>
+                    <!-- Botón "Actualizar" visible si se está en modo edición -->
+                    <button *ngIf="!modoCreacion" 
+                            class="btn btn-primary btn-block"  (click)="editar()">
+                        Actualizar
+                    </button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>

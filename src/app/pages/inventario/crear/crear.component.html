@@ -11,42 +11,68 @@
         <nb-card-body>
             <div class="row">
                 <div class="col-3">
-                    <label>_id</label>
+                    <label>Nombre inventario</label>
                 </div>
                 <div class="col-9">
                     <!-- Se deshabilita si no está en modo creación -->
                     <input class="form-control" type="text" 
-                           [disabled]="!modoCreacion" 
-                           [(ngModel)]="elInventario.fecha"> <!-- Vinculación bidireccional del valor del campo con la propiedad "cedula" del objeto "elEstudiante" -->
+                           
+                           [(ngModel)]="elInventario.nombre_inventario"> <!-- Vinculación bidireccional del valor del campo con la propiedad "cedula" del objeto "elEstudiante" -->
                     <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Cedula" está vacío -->       
-                    <p *ngIf="intentoEnvio && elInventario.fecha=='' ">Requerido</p>
+                    <p *ngIf="intentoEnvio && elInventario.nombre_inventario=='' ">Requerido</p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-3">
                     <!--<label>id_almacenista</label>-->
-                    <label>Almacenista</label>
+                    <label>Id Almacenista</label>
                 </div>
                 <div class="col-9">
                     <input class="form-control" type="text" 
-                           [(ngModel)]="elInventario.id_almacenista"><!-- Vinculación bidireccional del valor del campo con la propiedad "nombre" del objeto "elEstudiante" -->
+                           [(ngModel)]="elInventario.almacenista"><!-- Vinculación bidireccional del valor del campo con la propiedad "nombre" del objeto "elEstudiante" -->
                     <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Nombre" está vacío -->       
-                    <p *ngIf="intentoEnvio && elInventario.id_almacenista=='' ">Requerido</p>
+                    <p *ngIf="intentoEnvio && elInventario.almacenista=='' ">Requerido</p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-3">
-                    <!--<label>id_producto</label>-->
-                    <label>Producto</label>
+                    <!--<label>id_almacenista</label>-->
+                    <label>Mes</label>
                 </div>
                 <div class="col-9">
                     <input class="form-control" type="text" 
-                           [(ngModel)]="elInventario.id_producto">
-                    <p *ngIf="intentoEnvio && elInventario.id_producto=='' ">Requerido</p>
+                           [(ngModel)]="elInventario.mes"><!-- Vinculación bidireccional del valor del campo con la propiedad "nombre" del objeto "elEstudiante" -->
+                    <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Nombre" está vacío -->       
+                    <p *ngIf="intentoEnvio && elInventario.mes=='' ">Requerido</p>
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <!--<label>id_almacenista</label>-->
+                    <label>Año</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text" 
+                           [(ngModel)]="elInventario.ano"><!-- Vinculación bidireccional del valor del campo con la propiedad "nombre" del objeto "elEstudiante" -->
+                    <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Nombre" está vacío -->       
+                    <p *ngIf="intentoEnvio && elInventario.ano=='' ">Requerido</p>
+                </div>
+            </div>
+           <!-- <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>id_producto</label>
+                    <label></label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text" 
+                           [(ngModel)]="elInventario.cantidad">
+                    <p *ngIf="intentoEnvio && elInventario.cantidad=='' ">Requerido</p>
+                </div>
+            </div>-->
             <br>
             <div class="row">
                     <!-- Botón "Crear" visible si se está en modo creación -->

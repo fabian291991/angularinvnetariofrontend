@@ -57,7 +57,8 @@ constructor(private miServicioProveedor: ProveedorService,
   editar(): void {
     this.intentoEnvio = true;
     if (this.validarDatosCompletos()) {   
-      this.miServicioProveedor.editar(this.elProveedor.id_proveedor, this.elProveedor).
+      
+      this.miServicioProveedor.editar(this.id_proveedor, this.elProveedor).
         subscribe(data => {
           Swal.fire(
             'Actualizado',

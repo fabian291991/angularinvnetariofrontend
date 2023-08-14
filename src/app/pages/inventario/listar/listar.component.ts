@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ListarComponent implements OnInit {
   inventario : Inventario[];
-  nombresColumnas: string[] = ['fecha','id_producto','id_almacenista'];
+  nombresColumnas: string[] = ['Nombre inventario','Año','Mes','Almacenista','Opciones'];
 
   constructor(private miServicioInventario: InventarioService, private router: Router) { }
 
@@ -22,9 +22,18 @@ export class ListarComponent implements OnInit {
   listar():void{
     this.miServicioInventario.listar().
       subscribe(data => {
+        console.log(data);
         this.inventario=data
       });
   }
+
+
+  verinventarioproducto(id:string):void{
+
+this.router.navigate(["pages/inventarioproducto/listar/"+id]);
+
+  }
+
   agregar():void{
     console.log("agregando nuevo")
     this.router.navigate(["pages/inventario/crear"]);

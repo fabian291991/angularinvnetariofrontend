@@ -5,11 +5,11 @@ import { ListarComponent } from './listar/listar.component';
 
 const routes: Routes = [
   {
-    path:'listar',
+    path:'listar/:id_inventarioproducto',
     component: ListarComponent
     },
     {
-    path:'crear',
+    path:'crear/:id_inventarioproducto',
     component: CrearComponent
     },
     {

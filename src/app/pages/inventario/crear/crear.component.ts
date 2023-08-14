@@ -14,13 +14,10 @@ export class CrearComponent implements OnInit {
   id_inventario: string = "";
   intentoEnvio: boolean = false;
   elInventario: Inventario = {
-    _id: "",
-    fecha:"",
-    id_almacenista: "",
-    id_producto: ""
-
-    
-
+    ano:"",
+    /*cantidad:"",*/
+    mes:"",
+    nombre_inventario:"",
   }
   constructor(private miServicioInventario: InventarioService,
     private rutaActiva: ActivatedRoute,
@@ -44,10 +41,12 @@ export class CrearComponent implements OnInit {
 
   }
   agregar(): void {
-    if (this.validarDatosCompletos()) {
+    //if (this.validarDatosCompletos()) {
     this.intentoEnvio = true;
-    this.miServicioInventario.crear(this.elInventario).
+    console.log(this.elInventario);
+    this.miServicioInventario.crear(this.elInventario,this.elInventario.almacenista).
       subscribe(data => {
+        console.log(data)
         Swal.fire(
           'Creado',
           'El inventario ha sido creado correctamente',
@@ -55,7 +54,7 @@ export class CrearComponent implements OnInit {
         )
         this.router.navigate(["pages/inventario/listar"]);
     });
-  }
+  //}
   }
   editar(): void {
     this.intentoEnvio = true;
@@ -66,22 +65,22 @@ export class CrearComponent implements OnInit {
           'Actualizado',
           'El inventario ha sido actualizado correctamente',
           'success'
-    )
-    this.router.navigate(["pages/inventario/listar"]);
-    });
+        )
+        this.router.navigate(["pages/inventario/listar"]);
+      });
     }
-    }
+  }
     validarDatosCompletos():boolean{
     this.intentoEnvio=true;
     if(this.elInventario._id=="" ||
-      this.elInventario.fecha=="" ||
-      this.elInventario.id_almacenista=="" ||
-      this.elInventario.id_producto ){
+      this.elInventario.ano=="" ||
+      this.elInventario.mes=="" ||
+      this.elInventario.almacenista=="" || this.elInventario.nombre_inventario=="" /*|| this.elInventario.cantidad==""*/ ){
       
-    return false;
-  }else{
+      return false;
+     }else{
       return true;
+    }
   }
-}
 
 }

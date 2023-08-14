@@ -11,56 +11,21 @@
         <nb-card-body>
             <div class="row">
                 <div class="col-3">
-                    <label>fecha</label>
-                </div>
-                <div class="col-9">
-                    <!-- Se deshabilita si no está en modo creación -->
-                    <input class="form-control" type="text" 
-                           [disabled]="!modoCreacion" 
-                           [(ngModel)]="elInventarioproducto.fecha"> <!-- Vinculación bidireccional del valor del campo con la propiedad "cedula" del objeto "elEstudiante" -->
-                    <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Cedula" está vacío -->       
-                    <p *ngIf="intentoEnvio && elInventarioproducto.fecha=='' ">Requerido</p>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-3">
                     <label>Producto</label>
                 </div>
                 <div class="col-9">
-                    <input class="form-control" type="text" 
-                           [(ngModel)]="elInventarioproducto.producto"><!-- Vinculación bidireccional del valor del campo con la propiedad "nombre" del objeto "elEstudiante" -->
-                    <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Nombre" está vacío -->       
-                    <p *ngIf="intentoEnvio && elInventarioproducto.producto=='' ">Requerido</p>
+                    <nb-select placeholder="Seleccione Un producto " [(ngModel)]="elInventarioproducto.producto">
+                        <nb-option *ngFor="let item of productos" value="{{item._id}}">{{item.referencia+" "+item.marca}}</nb-option>
+                      </nb-select>
                 </div>
             </div>
             <br>
-            <div class="row">
-                <div class="col-3">
-                    <label>Almacenista</label>
-                </div>
-                <div class="col-9">
-                    <input class="form-control" type="text" 
-                           [(ngModel)]="elInventarioproducto.almacenista">
-                    <p *ngIf="intentoEnvio && elInventarioproducto.almacenista=='' ">Requerido</p>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-3">
-                    <label>Cantidad</label>
-                </div>
-                <div class="col-9">
-                    <input class="form-control" type="text" 
-                           [(ngModel)]="elInventarioproducto.cantidad">
-                    <p *ngIf="intentoEnvio && elInventarioproducto.cantidad=='' ">Requerido</p>
-                </div>
-            </div>
+            
             <div class="row">
                     <!-- Botón "Crear" visible si se está en modo creación -->
                     <button  *ngIf="modoCreacion" 
                               class="btn btn-primary btn-block"  (click)="agregar()">
-                        Crear
+                        Añadir al Inventario
                     </button>
                     <!-- Botón "Actualizar" visible si se está en modo edición -->
                     <button *ngIf="!modoCreacion" 

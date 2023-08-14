@@ -19,8 +19,8 @@ export class InventarioproductoService {
     return this.http.delete<Inventarioproducto>(`${environment.url_gateway}/inventarioproductos/${id}`,);
 
   }
-  getInventarioproducto(id: string): Observable<Inventarioproducto> { 
-    return this.http.get<Inventarioproducto>(`${environment.url_gateway}/inventarioproductos/${id}`);
+  getInventarioproducto(id: string): Observable<Inventarioproducto[]> { 
+    return this.http.get<Inventarioproducto[]>(`${environment.url_gateway}/inventarioproductos/inventario/${id}`);
     }
     crear(elInventarioproducto: Inventarioproducto) {
     return this.http.post(`${environment.url_gateway}/inventarioproductos`, elInventarioproducto);

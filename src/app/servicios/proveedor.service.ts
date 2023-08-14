@@ -11,20 +11,20 @@ export class ProveedorService {
 
   constructor(private http: HttpClient) { }
   listar(): Observable<Proveedor[]> {
-    return this.http.get<Proveedor[]>(`${environment.url_gateway}/proveedor`);
+    return this.http.get<Proveedor[]>(`${environment.url_gateway}/proveedores`);
 }
   eliminar(id:string){ 
-    return this.http.delete<Proveedor>(`${environment.url_gateway}/proveedor/${id}`,);
+    return this.http.delete<Proveedor>(`${environment.url_gateway}/proveedores/${id}`,);
 
 }
   getProveedor(id: string): Observable<Proveedor> { 
-    return this.http.get<Proveedor>(`${environment.url_gateway}/proveedor/${id}`);
+    return this.http.get<Proveedor>(`${environment.url_gateway}/proveedores/${id}`);
 }
   crear(elProveedor: Proveedor) {
-    return this.http.post(`${environment.url_gateway}/proveedor`, elProveedor);
+    return this.http.post(`${environment.url_gateway}/proveedores`, elProveedor);
 }
   editar(id:string,elProveedor: Proveedor) {
-    return this.http.put(`${environment.url_gateway}/proveedor/${id}`, elProveedor);
+    return this.http.put(`${environment.url_gateway}/proveedores/${id}`, elProveedor);
 }
 
 }

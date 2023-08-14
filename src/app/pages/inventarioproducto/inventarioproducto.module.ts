@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InventarioproductoRoutingModule } from './inventarioproducto-routing.module';
 import { ListarComponent } from './listar/listar.component';
 import { CrearComponent } from './crear/crear.component';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbSelectModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 
 
@@ -24,7 +24,8 @@ const routes: Routes = [
     CommonModule,
     InventarioproductoRoutingModule,
     NbCardModule,
-    FormsModule
+    FormsModule,
+    NbSelectModule,
     
   ]
 })

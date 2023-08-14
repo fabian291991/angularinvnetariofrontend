@@ -16,7 +16,7 @@
                 <div class="col-9">
                     <!-- Se deshabilita si no está en modo creación -->
                     <input class="form-control" type="text" 
-                           [disabled]="!modoCreacion" 
+                          
                            [(ngModel)]="elProveedor.nombre"> <!-- Vinculación bidireccional del valor del campo con la propiedad "cedula" del objeto "elEstudiante" -->
                     <!-- Muestra un mensaje de error si se ha intentado enviar el formulario y el campo "Cedula" está vacío -->       
                     <p *ngIf="intentoEnvio && elProveedor.nombre=='' ">Requerido</p>

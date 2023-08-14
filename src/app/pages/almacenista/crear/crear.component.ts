@@ -36,19 +36,21 @@ export class CrearComponent implements OnInit {
   // Obtiene los datos del almacenista utilizando el servicio de almacenista
   getAlmacenista(id: string) {
     this.miServicioAlmacenista.getAlmacenista(id).
-      subscribe(data => {
-        this.elAlmacenista = data;
-      });
+    subscribe(data => {
+    this.elAlmacenista = data;
+    });
 
   }
   
     agregar(): void {
       // Verifica si los datos están completos antes de agregar el almacenista
-      if (this.validarDatosCompletos()) {
+      //if (this.validarDatosCompletos()) {
         this.intentoEnvio = true;
+        console.log(this.elAlmacenista);
         // Crea un nuevo almacenista utilizando el servicio de almacenista
         this.miServicioAlmacenista.crear(this.elAlmacenista).
           subscribe(data => {       // Se suscribe a la respuesta del servicio
+            console.log(data)
             Swal.fire(              // Muestra una notificación utilizando la librería Swal (SweetAlert)
               'Creado',
               'El almacenista ha sido creado correctamente',
@@ -58,7 +60,7 @@ export class CrearComponent implements OnInit {
             this.router.navigate(["pages/almacenista/listar"]);
           });
 
-      }
+    //  }
 
     }
     editar(): void {

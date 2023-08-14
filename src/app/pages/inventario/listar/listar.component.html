@@ -15,10 +15,17 @@
             </tr>
             <ng-container *ngFor="let inventarioActual of inventario">
                 <tr>
-                    <td>{{inventarioActual.fecha}}</td>
-                    <td>{{inventarioActual.id_producto}}</td>
-                    <td>{{inventarioActual.id_almacenista}} </td>
+                    <td>{{inventarioActual.nombre_inventario}}</td>
+                    <td>{{inventarioActual.ano}}</td>
+                    <td>{{inventarioActual.mes}}</td>
+                    <!--td>{{inventarioActual.cantidad}} </td>-->
+                    <td>{{inventarioActual.almacenista.nombre}} </td>
                     <td>
+                        <button type="button" class="btn btn-primary" (click)="verinventarioproducto(inventarioActual._id)">
+
+                            <i class="far fa-eye" style="color: #f0f0f0;"></i>
+                        </button>
+
                         <button type="button" class="btn btn-primary" (click)="editar(inventarioActual._id)">
 
                             <i class="fas fa-pencil-alt"></i>

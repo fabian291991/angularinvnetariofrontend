@@ -10,24 +10,21 @@
             <tr>
                 <th *ngFor="let columaActual of nombresColumnas">{{columaActual}}</th>
             </tr>
-            <ng-container *ngFor="let inventarioproductoActual of inventarioproducto">
+             <ng-container *ngFor="let inventarioproductoActual of inventarioproducto">
                 <tr>
-                    <td>{{inventarioproductoActual.fecha}}</td>
-                    <td>{{inventarioproductoActual.producto}}</td>
-                    <td>{{inventarioproductoActual.almacenista}} </td>
-                    <td>{{inventarioproductoActual.cantidad}} </td>
+                    <td>{{inventarioproductoActual.producto.marca}}</td>
+                    <td>{{inventarioproductoActual.producto.precio}}</td>
+                    <td>{{inventarioproductoActual.producto.referencia}}</td>
+                    <td>{{inventarioproductoActual.producto.talla}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" 
-                                (click)="editar(inventarioproductoActual._id)">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
+                        
                         <button type="button" class="btn btn-danger" 
                                 (click)="eliminar(inventarioproductoActual._id)">
                             <i class="fas fa-solid fa-trash"></i>
                         </button>
                     </td>
                 </tr>
-            </ng-container>
+            </ng-container> 
         </table>
     </nb-card>
 </div>

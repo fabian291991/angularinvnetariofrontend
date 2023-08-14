@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ListarComponent implements OnInit {
   almacenista : Almacenista[]; // Arreglo que almacenará la lista de almacenistas
-  nombresColumnas: string[] = ['Cedula','Nombre','Apellido','Opciones'];
+  nombresColumnas: string[] = ['Id Almacenista','Cedula','Nombre','Apellido','Opciones'];
 
   constructor(private miServicioAlmacenista: AlmacenistaService, private router: Router) { }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Inventarioproducto } from '../../../modelos/inventarioproducto.model';
 import { InventarioproductoService } from '../../../servicios/inventarioproducto.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-listar',
@@ -11,23 +11,28 @@ import { Router } from '@angular/router';
 })
 export class ListarComponent implements OnInit {
   inventarioproducto : Inventarioproducto[]; // Arreglo que almacenará la lista de almacenistas
-  nombresColumnas: string[] = ['Fecha','Producto','Almacenista','Cantidad'];
-
-  constructor(private miServicioInventarioproducto: InventarioproductoService, private router: Router) { }
+  nombresColumnas: string[] = ['Marca','Precio','Referencia','Talla','Cantidad','Eliminar'];
+  id_inventario:string;
+  constructor( private rutaActiva: ActivatedRoute,private miServicioInventarioproducto: InventarioproductoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.listar();
+    if (this.rutaActiva.snapshot.params.id_inventarioproducto) {   
+      this.id_inventario = this.rutaActiva.snapshot.params.id_inventarioproducto;// Obtiene el valor del parámetro "id_estudiante" de la URL y lo asigna a la variable "id_estudiante"
+      this.listar(this.id_inventario);
+    }
+    
   }
-  listar():void{
+  listar(id:string):void{
     // Llama al servicio de almacenista para obtener la lista de almacenista
-    this.miServicioInventarioproducto.listar().
+    this.miServicioInventarioproducto.getInventarioproducto(id).
       subscribe(data => {
-        this.inventarioproducto=data; // Almacena la lista de los almacenistas en la variable almacenista
+        this.inventarioproducto=data;
+        console.log(this.inventarioproducto); // Almacena la lista de los almacenistas en la variable almacenista
       });
   }
   agregar():void{
     console.log("agregando nuevo")
-    this.router.navigate(["pages/inventarioproducto/crear"]);
+    this.router.navigate(["pages/inventarioproducto/crear/"+this.id_inventario]);
   }
   editar(id:string):void{
     console.log("editando a "+id)

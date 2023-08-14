@@ -24,7 +24,7 @@ export class CrearComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if (this.rutaActiva.snapshot.params.id_estudiante) {
+    if (this.rutaActiva.snapshot.params.id_producto) {
       this.modoCreacion = false;
       this.id_producto = this.rutaActiva.snapshot.params.id_producto;
       this.getProducto(this.id_producto)
@@ -56,7 +56,7 @@ export class CrearComponent implements OnInit {
   editar(): void {
     this.intentoEnvio = true;
     if (this.validarDatosCompletos()) {   
-      this.miServicioProducto.editar(this.elProducto.__id_producto, this.elProducto).
+      this.miServicioProducto.editar(this.id_producto, this.elProducto).
         subscribe(data => {
           Swal.fire(
             'Actualizado',
